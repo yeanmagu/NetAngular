@@ -1,0 +1,105 @@
+<br />
+
+<br />
+<br />
+<br />
+<br />
+<div class="container-fluid">
+  <div class="panel">
+    <div class="panel-heading">
+      <h3 class="panel-title">Gestionar Libros</h3>
+    </div>
+    <div class="panel-body">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <input type="text" name="filterBook" class="form-control" placeholder="Buscar..." [(ngModel)]="filterBook" value="" />
+          </div>
+        </div>
+        <div class="col-md-6">
+          <button type="button" class="btn btn-primary" (click)="loadAddnew()" data-toggle="modal"
+                 data-target="#myModal" title="Agregar Nuevo Libro">
+            <i class="fas fa-plus-circle"></i>
+          </button>
+        </div>
+      </div>
+      <div *ngIf="!dataavailbale">
+        <h4> Sin registros de Libros en la Bases de datos</h4>
+      </div>
+      <table class="table table-bordered " *ngIf="dataavailbale">
+        <thead>
+          <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Titulo</th>
+            <th scope="col">Edicion</th>
+            <th scope="col">Costo</th>
+            <th scope="col">Precio</th>
+            <th scope="col" style="align-content: center">
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let e of booklist | filter:filterBook  ">
+            <td scope="col">{{e.id}}</td>
+
+            <td scope="col">{{e.titulo}}</td>
+            <td scope="col">{{e.edicion}}</td>
+            <td scope="col">{{e.costo}}</td>
+            <td scope="col">{{e.precioMinorista}}</td>
+            <td style="display:none">{{e.id}}</td>
+            <td scope="col">
+              <button type="button" class="btn btn-default btn-primary" title="Editar"
+                      (click)="loadnewForm(e.id,e.titulo,e.fechaPublicacion,e.edicion,e.valoracionId,e.costo, e.precioMinorista,e.descripcionValoracion)"
+                      data-toggle="modal" data-target="#myModaledit">
+                <i class="far fa-edit"></i>
+              </button>
+              |
+              <button type="button" class="btn btn-default btn-primary" (click)="deleteconfirmation(e.id)" title="Eliminar">
+                <i class="fas fa-minus-square"></i>
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+
+    </div>
+  </div>
+
+  <hr>
+
+  <div id="myModal" class="modal" role="dialog">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+
+          <h4 class="modal-primary">Agregar un Libro</h4>
+          <button type="button" class="close" data-dismiss="modal">×</button>
+        </div>
+        <div class="modal-body">
+          <app-book-add #empadd (nameEvent)="RefreshData($event)"></app-book-add>
+        </div>
+        <div class="modal-footer">
+          <!--          <button type="button" #closeBtn class="btn btn-danger" data-dismiss="modal">Close</button>-->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="myModaledit" class="modal" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Editar Libro</h4>
+        <button type="button" class="close" data-dismiss="modal">×</button>
+
+      </div>
+      <div class="modal-body">
+        <app-book-edit (nameEvent)="RefreshData($event)" [isReset]="resetForm" #regForm></app-book-edit>
+      </div>
+      <div class="modal-footer">
+        <!--<button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>-->
+      </div>
+    </div>
+  </div>
+</div>

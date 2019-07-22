@@ -1,0 +1,77 @@
+<div class="container" style="border:thin">
+  <form #EditForm='ngForm' name="editform" (ngSubmit)="EditEmployee(EditForm)" class="form-horizontal"
+        style="width:50%">
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="fname">Titulo:</label>
+      <div class="col-sm-10">
+        <input style="width:50%" type="text" class="form-control" id="titulo" placeholder="Digite el Titulo del Libro"
+               name="titulo" titulo required [(ngModel)]='objBook.titulo' #titulo="ngModel">
+        <span class="help-bpx" *ngIf="titulo.touched && !titulo.valid ">*</span>
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="fechaPublicacion">Fecha Publicacion:</label>
+      <div class="col-sm-10">
+        <input style="width:50%" required type="date" class="form-control" width="50%"
+               id="fechaPublicacion" placeholder="Digite la Fecha de publicacion" name="fechaPublicacion" fechaPublicacion
+               [(ngModel)]='objBook.fechaPublicacion' #fechaPublicacion="ngModel">
+        <span class="help-bpx" *ngIf="fechaPublicacion.touched && !fechaPublicacion.valid ">Required</span>
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="edicion">Edicion:</label>
+      <div class="col-sm-10">
+        <input #edicion="ngModel" style="width:50%" type="text" [(ngModel)]='objBook.edicion' required
+               class="form-control" width="50%" id="edicion" placeholder="Enter edicion" name="edicion">
+        <span class="help-bpx" *ngIf="edicion.touched && !edicion.valid ">**</span>
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="costo">Costo:</label>
+      <div class="col-sm-10">
+        <input #costo="ngModel" style="width:50%" type="number" [(ngModel)]='objBook.costo' required
+               class="form-control" width="50%" id="costo" placeholder="Digite el costo del libro" name="costo">
+        <span class="help-bpx" *ngIf="costo.touched && !costo.valid ">**</span>
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="costo">Precio Minorista:</label>
+      <div class="col-sm-10">
+        <input #precio="ngModel" style="width:50%" type="number" [(ngModel)]='objBook.precioMinorista' required
+               class="form-control" width="50%" id="precio" placeholder="Digite el precio del libro" name="precioMinorista">
+        <span class="help-bpx" *ngIf="precio.touched && !precio.valid ">**</span>
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="valoracionId">Valoracion:</label>
+      <div class="col-sm-10">
+        <select name="valoracionId" class="form-control" style="width:50%" valoracionId required [(ngModel)]='objBook.valoracionId' #valoracionId="ngModel">
+          <option value="0" selected disabled>Please Select</option>
+          <option value="1">Extraordinario</option>
+          <option value="2">Excelente</option>
+          <option value="3">Bueno</option>
+          <option value="4">Dañado</option>
+        </select>
+        <span class="help-bpx" *ngIf="valoracionId.touched && !valoracionId.valid ">required</span>
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="costo">Descripcion Valoracion:</label>
+      <div class="col-sm-10">
+        <input #descripcion="ngModel" style="width:50%" type="text" [(ngModel)]='objBook.descripcion'
+               class="form-control" width="50%" id="descripcion" name="descripcion">
+
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-sm-offset-2 col-sm-10">
+        <button id="btnsubmit" type="submit" ng-disabled="ngForm.invalid" class="btn btn-primary"><i class="fas fa-sync"></i>  </button>
+
+        <button type="button" #closeBtn class="btn btn-primary" data-dismiss="modal">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+    </div>
+  </form>
+</div>
+

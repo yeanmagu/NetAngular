@@ -1,0 +1,40 @@
+<div class="col-md-8 col-offset-2 col-xs-12">
+
+
+  <h1>Libros</h1>
+
+  <p>Aqui podra gestionar los libros</p>
+
+  <p *ngIf="!forecasts"><em>Loading...</em></p>
+  <button (click)="add()">
+    Nuevo Libro
+  </button>
+  <table class='table table-responsive table-bordered' *ngIf="forecasts">
+    <thead>
+      <tr>
+        <th>Id</th>
+        <th>Titulo</th>
+        <th>Fecha Publicacion</th>
+        <th>Edicion</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let forecast of forecasts">
+        <td>{{ forecast.id }}</td>
+        <td>{{ forecast.titulo }}</td>
+        <td>{{ forecast.fechaPublicacion | date:'dd-MM-yyyy'}}</td>
+        <td>{{ forecast.edicion }}</td>
+        <td>
+          <a routerLink="/product-details/{{forecast.id}}">
+            <span class="badge">{{i+1}}</span> {{forecast.titulo}}
+          </a>
+          <button class="delete" title="Eliminar Libro"
+                  (click)="delete(forecast.id)">
+            x
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

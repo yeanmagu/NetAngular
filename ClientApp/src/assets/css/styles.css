@@ -1,0 +1,62 @@
+header .header .headerTop {
+  background-color: #d37d1f;
+  height: 60px;
+  padding: 0 25px;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: box;
+  display: flex;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+  header .header .headerTop .logo {
+    -ms-flex-preferred-size: 25%;
+    flex-basis: 25%;
+    -ms-flex: 25%;
+  }
+li.link-active[_ngcontent-c1] a[_ngcontent-c1], li.link-active[_ngcontent-c1] a[_ngcontent-c1]:hover, li.link-active[_ngcontent-c1] a[_ngcontent-c1]:focus {
+  background-color: #d37d1f !important;
+  color: white;
+}
+  li.link-active[_ngcontent-c1] a[_ngcontent-c1], li.link-active[_ngcontent-c1] a[_ngcontent-c1]:hover, li.link-active[_ngcontent-c1] a[_ngcontent-c1]:focus {
+    background-color: #808080 !important;
+    color: white;
+  }
+.bg-dark {
+  background-color: #ea6900 !important;
+  color: #d37d1f !important;
+}
+a{
+  color:white !important;
+  text-decoration:none;
+}
+.btn-primary {
+  color: #fff;
+  background-color: #ea6900 !important;
+  border-color: #ea6900 !important;
+}
+
+thead {
+  background-color: #ea6900;
+  color: white;
+}
+.panel {
+  margin-bottom: 20px;
+  
+  border: 1px solid #ea6900 !important;
+  border-radius: 4px;
+  -webkit-box-shadow: 0 1px 1px rgba(0,0,0,.05);
+  box-shadow: 0 1px 1px rgba(0,0,0,.05);
+  padding:10px !important;
+}
+.panel-heading {
+  padding: 10px 15px;
+  border-bottom: 1px solid #ea6900 !important;
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+}

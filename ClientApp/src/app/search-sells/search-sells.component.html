@@ -1,0 +1,90 @@
+
+  <br />
+  <br />
+  <br />
+  <br />
+<div class="col-sm-12">
+
+
+  <div class="panel">
+    <div class="panel-heading">
+      <h3 class="panel-title">Consultar Ventas</h3>
+    </div>
+    <div class="panel-body">
+      <div class="row">
+        <form #regForm='ngForm' (ngSubmit)="Register(regForm)" novalidate style="width:100%;">
+          <div class="col-md-12">
+            <fieldset>
+              <legend>Filtros</legend>
+              <div class="row">
+                <div class="col-md-3 form-group">
+                  <label>Fecha Inicial</label>
+                  <input required type="date" class="form-control"
+                         id="fechaInicial" placeholder="Digite la Fecha de inicio" name="fechaInicial" fechaInicial
+                         [(ngModel)]='objFilter.fechaInicial' #fechaInicial="ngModel">
+                </div>
+                <div class="col-md-3 form-group">
+                  <label>Fecha Fin</label>
+                  <input required type="date" class="form-control"
+                         id="fechaFin" placeholder="Digite la Fecha final" name="fechaFin" fechaFin
+                         [(ngModel)]='objFilter.fechaFin' #fechaFin="ngModel">
+                </div>
+
+                <div class="col-md-3 form-group">
+                  <label>Cliente</label>
+                  <input required type="text" class="form-control"
+                         id="cliente" placeholder="Digite el nombre del cliente" name="cliente" cliente
+                         [(ngModel)]='objFilter.cliente' #cliente="ngModel">
+                </div>
+                <div class="col-md-3 form-group">
+                  <br />
+                  <button id="btnsubmit" type="submit" ng-disabled="ngForm.invalid" class="btn btn-primary"><i class="fa fa-search"></i>  </button>
+                </div>
+              </div>
+            </fieldset>
+          </div>
+        </form>
+
+        <div *ngIf="!dataavailbale">
+          <h4> Sin registros de Libros en la Bases de datos</h4>
+        </div>
+        <table class="table table-bordered " *ngIf="dataavailbale">
+          <thead>
+            <tr>
+              <th scope="col">Nombre</th>
+              <th scope="col">Apellido</th>
+              <th scope="col">Telefono</th>
+              <th scope="col">Correo</th>
+              <th scope="col">Titulo</th>
+              <th scope="col">
+                Fecha
+              </th>
+              <th scope="col">
+                Valor
+              </th>
+              <th scope="col">
+                Empleado
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let e of list ">
+              <td scope="col">{{e.nombre}}</td>
+
+              <td scope="col">{{e.apellidos}}</td>
+              <td scope="col">{{e.telefono}}</td>
+              <td scope="col">{{e.correo}}</td>
+              <td scope="col">{{e.titulo}}</td>
+              <td scope="col">{{e.fecha  | date:'dd-MM-yyyy'}}</td>
+              <td scope="col">{{e.valor}}</td>
+              <td scope="col">{{e.empleado}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+
+
+    </div>
+  </div>
+</div>
